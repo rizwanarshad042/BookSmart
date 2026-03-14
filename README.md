@@ -32,3 +32,21 @@ The frontend dev server proxies `/api`, `/uploads`, and `/invoices` to `VITE_DEV
 ## Production deployment
 
 Detailed instructions for Name.com DNS + backend/frontend hosting are in `DEPLOYMENT.md`.
+
+Quick summary:
+
+- Backend (Render):
+	- Root Directory: `backend`
+	- Build Command: `npm install`
+	- Start Command: `npm start`
+	- Health Check: `/api/health`
+
+- Frontend (Vercel):
+	- Root Directory: `frontend`
+	- Build Command: `npm run build`
+	- Output Directory: `dist`
+	- Required env: `VITE_API_ORIGIN=https://api.booksmart.dev`
+
+Environment templates are available in:
+- `backend/.env.example`
+- `frontend/.env.example`

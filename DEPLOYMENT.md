@@ -1,101 +1,116 @@
-# Deployment Guide (Name.com + Full Stack)
+# Deployment Guide (Name.com + Render + Vercel)
 
-This project is split into:
-- `frontend` (Vite React app)
-- `backend` (Node/Express API + MongoDB)
+This project is split into two deployable apps:
+- `backend` (Node/Express API)
+- `frontend` (Vite React SPA)
 
 Recommended production architecture:
-- Frontend: `https://yourdomain.com`
-- Backend API: `https://api.yourdomain.com`
+- Frontend: `https://booksmart.dev`
+- Frontend (www): `https://www.booksmart.dev`
+- Backend API: `https://api.booksmart.dev`
 
-## 1) Prepare environment variables
+## 1) Security first
 
-### Backend (`backend/.env`)
-Start from `backend/.env.example` and set real values.
+If secrets were ever committed in `.env`, rotate them before deploying:
+- MongoDB password/user
+- JWT secret
+- Cloudinary API key/secret
+- Gmail app password and OAuth secrets
 
-Required minimum:
+Then use host dashboards (Render/Vercel) for production secrets.
+
+## 2) Backend deploy on Render
+
+Create a new **Web Service** in Render from this repository.
+
+Use these settings:
+- Root Directory: `backend`
+- Environment: `Node`
+- Build Command: `npm install`
+- Start Command: `npm start`
+
+Set environment variables in Render:
 - `MONGO_URI`
 - `JWT_SECRET`
-- `FRONTEND_ORIGINS`
-- `FRONTEND_URL`
-- `BACKEND_BASE_URL`
+- `FRONTEND_ORIGINS=https://booksmart.dev,https://www.booksmart.dev`
+- `FRONTEND_URL=https://booksmart.dev`
+- `BACKEND_BASE_URL=https://api.booksmart.dev`
+- `CLOUDINARY_CLOUD_NAME`
+- `CLOUDINARY_API_KEY`
+- `CLOUDINARY_API_SECRET`
+- `EMAIL_USER`
+- `EMAIL_PASSWORD`
+- `GMAIL_REDIRECT_URI=https://api.booksmart.dev/api/auth/gmail/callback`
 
-### Frontend (`frontend/.env.production`)
-Set:
-- `VITE_API_ORIGIN=https://api.yourdomain.com`
+After first deploy, verify Render URL health:
+- `https://<your-render-service>.onrender.com/api/health`
 
-For local dev (`frontend/.env.local`):
-- `VITE_DEV_API_TARGET=http://localhost:5000`
+## 3) Frontend deploy on Vercel
 
-## 2) Deploy backend
+Create a new project in Vercel from this repository.
 
-Deploy `backend` on a Node host (Render/Railway/VM/etc).
+Use these settings:
+- Framework Preset: `Other`
+- Root Directory: `frontend`
+- Build Command: `npm run build`
+- Output Directory: `dist`
 
-Basic commands:
-- Install: `npm install`
-- Start: `npm start`
+Set environment variable in Vercel:
+- `VITE_API_ORIGIN=https://api.booksmart.dev`
 
-Health check endpoint:
-- `GET /api/health`
+This repository includes `frontend/vercel.json` for SPA route rewrites so direct links like `/login` work in production.
 
-After deploy, copy your backend public URL (example: `https://hotel-api.onrender.com`).
+## 4) Attach custom domains
 
-## 3) Deploy frontend
+In Vercel project domains, add:
+- `booksmart.dev`
+- `www.booksmart.dev`
 
-Deploy `frontend` on a static host (Vercel/Netlify/Cloudflare Pages).
+In Render service custom domains, add:
+- `api.booksmart.dev`
 
-Build command:
-- `npm run build`
+Both dashboards will show the DNS values to use. Prefer those exact values if they differ.
 
-Publish directory:
-- `dist`
+## 5) Add DNS records in Name.com
 
-Set env var on frontend host:
-- `VITE_API_ORIGIN=https://api.yourdomain.com`
+In Name.com DNS for `booksmart.dev`, create/update:
 
-## 4) Connect Name.com DNS
+- Root (`@`) for Vercel:
+  - Type: `A`
+  - Host: `@`
+  - Answer: `76.76.21.21`
 
-In Name.com DNS records:
-
-- For root domain (`yourdomain.com`):
-  - If your frontend provider gives A records, add those A records.
-  - If provider gives CNAME-only and supports ALIAS/ANAME flattening, use that.
-
-- For www:
+- `www` for Vercel:
   - Type: `CNAME`
   - Host: `www`
-  - Value: your frontend target (for example `cname.vercel-dns.com`)
+  - Answer: `cname.vercel-dns.com`
 
-- For API subdomain:
+- `api` for Render:
   - Type: `CNAME`
   - Host: `api`
-  - Value: your backend target host (for example `hotel-api.onrender.com`)
+  - Answer: `<your-render-service>.onrender.com`
 
-Wait for DNS propagation (usually minutes, sometimes up to 24 hours).
+DNS propagation can take from a few minutes up to 24 hours.
 
-## 5) Backend CORS and URLs
+## 6) Verify end-to-end
 
-Set these backend vars to your real domain(s):
-- `FRONTEND_ORIGINS=https://yourdomain.com,https://www.yourdomain.com`
-- `FRONTEND_URL=https://yourdomain.com`
-- `BACKEND_BASE_URL=https://api.yourdomain.com`
+1. Open `https://api.booksmart.dev/api/health`.
+2. Open `https://booksmart.dev`.
+3. Test signup/login.
+4. Test hotel images and invoices.
+5. Test booking + payment flow.
 
-## 6) SSL/HTTPS
+## 7) Troubleshooting
 
-- Enable HTTPS on frontend host for `yourdomain.com` and `www.yourdomain.com`.
-- Enable HTTPS on backend host for `api.yourdomain.com`.
-- Keep all app URLs as `https://`.
+- `CORS blocked for origin`:
+  - Ensure Render `FRONTEND_ORIGINS` exactly contains both domains:
+  - `https://booksmart.dev,https://www.booksmart.dev`
 
-## 7) Quick verification
+- Frontend calls localhost in production:
+  - Ensure Vercel env `VITE_API_ORIGIN` is set and project redeployed.
 
-1. Open `https://api.yourdomain.com/api/health` and verify success JSON.
-2. Open frontend domain and test login/signup.
-3. Test image loading from `/uploads`.
-4. Test booking flow and admin pages.
+- Refresh on route shows 404:
+  - Ensure `frontend/vercel.json` exists and Vercel Root Directory is `frontend`.
 
-## Optional: single-domain setup
-
-If you host frontend and backend behind one reverse proxy (Nginx):
-- Frontend on `/`
-- Backend on `/api`, `/uploads`, `/invoices`
-- Keep frontend `VITE_API_ORIGIN` empty.
+- Gmail OAuth callback mismatch:
+  - Keep provider redirect URI and backend `GMAIL_REDIRECT_URI` identical.
