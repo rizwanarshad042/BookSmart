@@ -1,0 +1,51 @@
+/* ── Contact Page ── */
+.ct-hero {
+    background: linear-gradient(135deg, #0c2569 0%, #1e5bb8 50%, #4a90e2 100%);
+    padding: 80px 20px 64px;
+    text-align: center;
+    color: #fff;
+}
+
+.ct-contact-card {
+    border: none;
+    border-radius: 16px;
+    text-align: center;
+    padding: 24px;
+    height: 100%;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.ct-form-card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+}
+
+.ct-faq-title,
+.ct-social-wrap {
+    text-align: center;
+}
+
+.ct-social-icons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+@media (min-width: 992px) {
+
+    .ct-faq-title,
+    .ct-social-wrap {
+        text-align: left;
+    }
+
+    .ct-social-icons {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 575px) {
+    .ct-hero {
+        padding: 56px 16px 48px;
+    }
+}

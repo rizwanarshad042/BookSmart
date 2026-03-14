@@ -141,9 +141,9 @@ const Navbar = () => {
 
         <div className="navbar-nav d-none d-lg-flex align-items-center ms-auto">
           <Link
-            to="/home"
+            to="/"
             className="nav-link me-2 fw-medium"
-            style={{ fontSize: '14px', color: location.pathname === '/home' ? '#1e5bb8' : '#374151' }}
+            style={{ fontSize: '14px', color: location.pathname === '/' ? '#1e5bb8' : '#374151' }}
           >
             Home
           </Link>
@@ -297,7 +297,7 @@ const Navbar = () => {
                       <li><Link className="dropdown-item py-2" to="/login">Log in</Link></li>
                       <li><Link className="dropdown-item py-2" to="/signup">Sign up</Link></li>
                       <li><hr className="dropdown-divider" /></li>
-                      <li><Link className="dropdown-item py-2" to="/home">Home</Link></li>
+                      <li><Link className="dropdown-item py-2" to="/">Home</Link></li>
                       <li><Link className="dropdown-item py-2" to="/about">About Us</Link></li>
                       <li><Link className="dropdown-item py-2" to="/contact">Contact</Link></li>
                     </ul>
@@ -407,7 +407,7 @@ const Navbar = () => {
                     <li><Link className="dropdown-item py-2" to="/login">Log in</Link></li>
                     <li><Link className="dropdown-item py-2" to="/signup">Sign up</Link></li>
                     <li><hr className="dropdown-divider" /></li>
-                    <li><Link className="dropdown-item py-2" to="/home">Home</Link></li>
+                    <li><Link className="dropdown-item py-2" to="/">Home</Link></li>
                     <li><Link className="dropdown-item py-2" to="/about">About Us</Link></li>
                     <li><Link className="dropdown-item py-2" to="/contact">Contact</Link></li>
                   </ul>

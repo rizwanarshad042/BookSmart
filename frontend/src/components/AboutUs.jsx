@@ -43,16 +43,9 @@ const AboutUs = () => {
     return (
         <div className="bg-white">
             {/* Hero */}
-            <div
-                style={{
-                    background: 'linear-gradient(135deg, #0c2569 0%, #1e5bb8 50%, #4a90e2 100%)',
-                    padding: '80px 20px',
-                    textAlign: 'center',
-                    color: '#fff',
-                }}
-            >
+            <div className="au-hero">
                 <div className="container">
-                    <p className="fw-semibold text-uppercase mb-2" style={{ letterSpacing: '3px', opacity: 0.75, fontSize: '0.85rem' }}>
+                    <p className="fw-semibold text-uppercase mb-2" style={{ letterSpacing: '3px', opacity: 0.75, fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)' }}>
                         Who We Are
                     </p>
                     <h1 className="fw-bold mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
@@ -68,22 +61,22 @@ const AboutUs = () => {
             {/* Story */}
             <div className="container py-5">
                 <div className="row align-items-center g-5">
-                    <div className="col-12 col-md-6">
-                        <p className="fw-semibold text-uppercase mb-2" style={{ color: '#FF385C', letterSpacing: '2px', fontSize: '0.8rem' }}>
+                    <div className="col-12 col-md-6 text-center text-md-start">
+                        <p className="au-section-label mb-2">
                             Our Story
                         </p>
                         <h2 className="fw-bold mb-4" style={{ color: '#0c2569', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}>
                             Born Out of Frustration, Built with Purpose
                         </h2>
-                        <p className="text-muted mb-3" style={{ lineHeight: '1.8' }}>
+                        <p className="text-muted mb-3 mx-auto mx-md-0" style={{ lineHeight: '1.8', maxWidth: '640px' }}>
                             We were travellers ourselves — tired of unreliable listings, hidden charges, and booking
                             platforms that weren't built for the Pakistani market. So we decided to build one.
                         </p>
-                        <p className="text-muted mb-3" style={{ lineHeight: '1.8' }}>
+                        <p className="text-muted mb-3 mx-auto mx-md-0" style={{ lineHeight: '1.8', maxWidth: '640px' }}>
                             BookSmart launched in Lahore with a simple promise: verified listings, transparent pricing,
                             and seamless payments via both Stripe and JazzCash. No surprises.
                         </p>
-                        <p className="text-muted" style={{ lineHeight: '1.8' }}>
+                        <p className="text-muted mx-auto mx-md-0" style={{ lineHeight: '1.8', maxWidth: '640px' }}>
                             Today, we're growing across Pakistan — with plans to reach Karachi, Islamabad, Murree, Naran,
                             and Hunza. Our long-term vision is to become the go-to travel platform for all of South Asia.
                         </p>
@@ -97,10 +90,7 @@ const AboutUs = () => {
                                 { number: '1', label: 'Mission' },
                             ].map(({ number, label }) => (
                                 <div key={label} className="col-6">
-                                    <div
-                                        className="text-center p-4 rounded-4"
-                                        style={{ background: '#f8f9ff', border: '1px solid #e8eeff' }}
-                                    >
+                                    <div className="au-stat-box">
                                         <div className="fw-bold mb-1" style={{ fontSize: '2.5rem', color: '#1e5bb8' }}>{number}</div>
                                         <div className="text-muted" style={{ fontSize: '0.9rem' }}>{label}</div>
                                     </div>
@@ -150,12 +140,7 @@ const AboutUs = () => {
                 <div className="row g-4">
                     {values.map(({ icon, title, desc }) => (
                         <div key={title} className="col-12 col-sm-6 col-lg-3">
-                            <div
-                                className="card h-100 border-0 shadow-sm p-4 text-center"
-                                style={{ borderRadius: '16px', transition: 'transform 0.2s' }}
-                                onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
-                                onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
-                            >
+                            <div className="au-value-card text-center">
                                 <div style={{ fontSize: '2.2rem', marginBottom: '10px' }}>{icon}</div>
                                 <h5 className="fw-bold mb-2" style={{ color: '#0c2569' }}>{title}</h5>
                                 <p className="text-muted mb-0" style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>{desc}</p>
@@ -181,15 +166,10 @@ const AboutUs = () => {
                     <div className="row g-4 justify-content-center">
                         {team.map(({ name, role, responsibilities, initials, color }) => (
                             <div key={name} className="col-12 col-sm-6 col-lg-3">
-                                <div
-                                    className="card h-100 border-0 shadow-sm text-center p-4"
-                                    style={{ borderRadius: '20px', transition: 'transform 0.2s' }}
-                                    onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-4px)')}
-                                    onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
-                                >
+                                <div className="au-team-card">
                                     <div
-                                        className="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white mx-auto mb-3"
-                                        style={{ width: '72px', height: '72px', background: color, fontSize: '1.4rem' }}
+                                        className="au-avatar"
+                                        style={{ background: color }}
                                     >
                                         {initials}
                                     </div>
@@ -214,7 +194,7 @@ const AboutUs = () => {
                     the platform for you.
                 </p>
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
-                    <Link to="/" className="btn btn-light fw-semibold px-4 py-2" style={{ borderRadius: '22px', color: '#1e5bb8' }}>
+                    <Link to="/browse-hotels" className="btn btn-light fw-semibold px-4 py-2" style={{ borderRadius: '22px', color: '#1e5bb8' }}>
                         Browse Hotels
                     </Link>
                     <Link to="/contact" className="btn btn-outline-light fw-semibold px-4 py-2" style={{ borderRadius: '22px' }}>

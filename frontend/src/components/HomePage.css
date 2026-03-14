@@ -20,6 +20,7 @@
 .hp-hero-content {
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 .hp-hero h1 {
@@ -33,6 +34,7 @@
     opacity: 0.88;
     max-width: 560px;
     line-height: 1.75;
+    margin: 0 auto;
 }
 
 .hp-badge {
@@ -100,6 +102,7 @@
     flex-wrap: wrap;
     gap: 24px;
     align-items: center;
+    justify-content: center;
 }
 
 .hp-trust-item {
@@ -128,6 +131,7 @@
     background: #fff;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     height: 100%;
+    text-align: center;
 }
 
 .hp-feature-card:hover {

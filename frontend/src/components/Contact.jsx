@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import './Contact.css';
 
 const contactDetails = [
     { icon: '📧', label: 'Email', value: 'support@booksmart.pk', href: 'mailto:support@booksmart.pk' },
@@ -57,14 +58,7 @@ const Contact = () => {
     return (
         <div className="bg-white">
             {/* Hero */}
-            <div
-                style={{
-                    background: 'linear-gradient(135deg, #0c2569 0%, #1e5bb8 50%, #4a90e2 100%)',
-                    padding: '80px 20px',
-                    textAlign: 'center',
-                    color: '#fff',
-                }}
-            >
+            <div className="ct-hero">
                 <div className="container">
                     <p className="fw-semibold text-uppercase mb-2" style={{ letterSpacing: '3px', opacity: 0.75, fontSize: '0.85rem' }}>
                         Get in Touch
@@ -84,7 +78,7 @@ const Contact = () => {
                 <div className="row g-4 mb-5">
                     {contactDetails.map(({ icon, label, value, href }) => (
                         <div key={label} className="col-12 col-sm-6 col-lg-3">
-                            <div className="card h-100 border-0 shadow-sm text-center p-4" style={{ borderRadius: '16px' }}>
+                            <div className="ct-contact-card">
                                 <div style={{ fontSize: '2rem', marginBottom: '10px' }}>{icon}</div>
                                 <p className="fw-semibold mb-1" style={{ color: '#0c2569', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{label}</p>
                                 {href ? (
@@ -101,7 +95,7 @@ const Contact = () => {
                 <div className="row g-5">
                     {/* Contact Form */}
                     <div className="col-12 col-lg-7">
-                        <div className="card border-0 shadow-sm p-4 p-md-5" style={{ borderRadius: '20px' }}>
+                        <div className="ct-form-card p-4 p-md-5">
                             <h3 className="fw-bold mb-1" style={{ color: '#0c2569' }}>Send Us a Message</h3>
                             <p className="text-muted mb-4" style={{ fontSize: '0.95rem' }}>We respond within approximately 30 seconds during support hours.</p>
                             <form onSubmit={handleSubmit} noValidate>
@@ -189,7 +183,7 @@ const Contact = () => {
 
                     {/* FAQ */}
                     <div className="col-12 col-lg-5">
-                        <h4 className="fw-bold mb-4" style={{ color: '#0c2569' }}>Frequently Asked Questions</h4>
+                        <h4 className="fw-bold mb-4 ct-faq-title" style={{ color: '#0c2569' }}>Frequently Asked Questions</h4>
                         <div className="d-flex flex-column gap-3">
                             {faqs.map((faq, i) => (
                                 <div
@@ -218,10 +212,10 @@ const Contact = () => {
                         </div>
 
                         {/* Social Links */}
-                        <div className="mt-5">
+                        <div className="mt-5 ct-social-wrap">
                             <h5 className="fw-bold mb-3" style={{ color: '#0c2569' }}>Follow Us</h5>
                             <p className="text-muted mb-3" style={{ fontSize: '0.9rem' }}>Stay updated with the latest from BookSmart.</p>
-                            <div className="d-flex gap-3">
+                            <div className="ct-social-icons">
                                 {[
                                     { label: 'Facebook', icon: 'f', color: '#1877f2' },
                                     { label: 'Instagram', icon: '🔘', color: '#e1306c' },

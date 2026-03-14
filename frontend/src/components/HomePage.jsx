@@ -49,8 +49,8 @@ const HomePage = () => {
             {/* ── HERO ── */}
             <section className="hp-hero">
                 <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-12 col-lg-9 hp-hero-content">
+                    <div className="row align-items-center justify-content-center">
+                        <div className="col-12 col-lg-10 hp-hero-content text-center">
                             <div className="hp-badge">
                                 <span>🇵🇰</span> Pakistan's Premier Booking Platform
                             </div>
@@ -62,8 +62,8 @@ const HomePage = () => {
                                 Lahore, Karachi, Islamabad, Murree, and beyond. Safe payments. Real reviews.
                                 Instant bookings.
                             </p>
-                            <div className="d-flex flex-column flex-sm-row gap-3">
-                                <Link to="/" className="hp-btn-primary">
+                            <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                <Link to="/browse-hotels" className="hp-btn-primary">
                                     Browse Hotels →
                                 </Link>
                                 <Link to="/about" className="hp-btn-outline">
@@ -201,7 +201,7 @@ const HomePage = () => {
                     </p>
                     <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                         <Link
-                            to="/"
+                            to="/browse-hotels"
                             className="btn fw-bold px-5 py-3"
                             style={{ background: '#1e5bb8', color: '#fff', borderRadius: '50px', fontSize: '1rem', border: 'none' }}
                         >
