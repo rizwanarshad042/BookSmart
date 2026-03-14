@@ -9,7 +9,7 @@
   --color-gray-700: #374151;
   --color-gray-800: #1F2937;
   --color-gray-900: #111827;
-  
+
   /* Border and Shadows */
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
@@ -116,7 +116,7 @@
   align-items: stretch;
 }
 
-.hotels-grid > .hotel-card {
+.hotels-grid>.hotel-card {
   width: 100%;
   max-width: 520px;
   justify-self: center;
@@ -157,7 +157,7 @@
   background: var(--color-gray-50);
 }
 
-.container {
+.home-container .container {
   width: 100%;
   margin: 0;
   padding: 0 20px;
@@ -279,6 +279,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -322,11 +323,11 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-  
-  .search-form-grid > div {
+
+  .search-form-grid>div {
     min-height: auto !important;
   }
-  
+
   .search-form-grid button {
     grid-column: 1 / -1;
     width: 100%;
@@ -338,8 +339,8 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  
-  .search-form-grid > div {
+
+  .search-form-grid>div {
     min-height: auto !important;
   }
 }
@@ -349,25 +350,25 @@
   .hero-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero-content p {
     font-size: 1.1rem;
   }
-  
+
   .hero-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .hero-button {
     width: 200px;
   }
-  
+
   .features-section h2,
   .cta-section h2 {
     font-size: 2rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -408,7 +409,7 @@
   .hero-content h1 {
     font-size: 2rem;
   }
-  
+
   .hero-content p {
     font-size: 1rem;
   }
@@ -467,7 +468,7 @@
     min-height: auto !important;
   }
 
-  .search-bar-mobile > div {
+  .search-bar-mobile>div {
     border-right: none !important;
     border-bottom: 1px solid #ddd;
     padding: 12px 16px !important;
@@ -475,7 +476,7 @@
     width: 100% !important;
   }
 
-  .search-bar-mobile > div:last-child {
+  .search-bar-mobile>div:last-child {
     border-bottom: none;
   }
 
