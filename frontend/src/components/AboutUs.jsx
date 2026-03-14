@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './AboutUs.css';
 
 const team = [
     {
@@ -92,7 +93,7 @@ const AboutUs = () => {
                             {[
                                 { number: '100+', label: 'Verified Listings' },
                                 { number: '4', label: 'Co-Founders' },
-                                { number: '3', label: 'Growth Phases' },
+                                { number: '~30s', label: 'Support Response' },
                                 { number: '1', label: 'Mission' },
                             ].map(({ number, label }) => (
                                 <div key={label} className="col-6">
@@ -202,53 +203,6 @@ const AboutUs = () => {
                 </div>
             </div>
 
-            {/* Growth Roadmap */}
-            <div className="container py-5">
-                <div className="text-center mb-5">
-                    <p className="fw-semibold text-uppercase mb-2" style={{ color: '#FF385C', letterSpacing: '2px', fontSize: '0.8rem' }}>
-                        Where We're Headed
-                    </p>
-                    <h2 className="fw-bold" style={{ color: '#0c2569' }}>Our Growth Roadmap</h2>
-                </div>
-                <div className="row g-4">
-                    {[
-                        {
-                            phase: 'Phase 1',
-                            label: 'Launch · Months 1–6',
-                            color: '#1e5bb8',
-                            points: ['Launch in Lahore with 100–200 verified listings', 'Acquire first 1,000 registered guests', 'Set up customer support & dispute resolution'],
-                        },
-                        {
-                            phase: 'Phase 2',
-                            label: 'Expand · Months 7–18',
-                            color: '#FF385C',
-                            points: ['Expand to Karachi, Islamabad, Murree, Naran, Hunza', 'Launch Android & iOS mobile apps', 'Introduce host subscription plans & guest loyalty program'],
-                        },
-                        {
-                            phase: 'Phase 3',
-                            label: 'Scale · Year 2–3',
-                            color: '#2ecc71',
-                            points: ['Expand to other South Asian markets', 'Dynamic pricing & ML-based recommendations', 'Target Series A investment round'],
-                        },
-                    ].map(({ phase, label, color, points }) => (
-                        <div key={phase} className="col-12 col-md-4">
-                            <div className="card h-100 border-0 shadow-sm p-4" style={{ borderRadius: '16px', borderTop: `4px solid ${color}` }}>
-                                <div className="fw-bold mb-1" style={{ color, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{phase}</div>
-                                <h5 className="fw-bold mb-3" style={{ color: '#0c2569' }}>{label}</h5>
-                                <ul className="list-unstyled mb-0">
-                                    {points.map(p => (
-                                        <li key={p} className="d-flex align-items-start mb-2">
-                                            <span className="me-2 mt-1" style={{ color, fontWeight: 'bold', fontSize: '0.8rem' }}>✓</span>
-                                            <span className="text-muted" style={{ fontSize: '0.9rem', lineHeight: '1.5' }}>{p}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
             {/* CTA */}
             <div
                 className="text-center py-5 px-4"
@@ -260,7 +214,7 @@ const AboutUs = () => {
                     the platform for you.
                 </p>
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
-                    <Link to="/browse-hotels" className="btn btn-light fw-semibold px-4 py-2" style={{ borderRadius: '22px', color: '#1e5bb8' }}>
+                    <Link to="/" className="btn btn-light fw-semibold px-4 py-2" style={{ borderRadius: '22px', color: '#1e5bb8' }}>
                         Browse Hotels
                     </Link>
                     <Link to="/contact" className="btn btn-outline-light fw-semibold px-4 py-2" style={{ borderRadius: '22px' }}>

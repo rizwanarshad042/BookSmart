@@ -10,6 +10,7 @@ import AdminDashboard from './components/AdminDashboard';
 import HotelDashboard from './components/HotelDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
+import HomePage from './components/HomePage';
 import BrowseHotels from './components/BrowseHotels';
 import HotelDetails from './components/HotelDetails';
 import Favorites from './components/Favorites';
@@ -99,7 +100,7 @@ function AppContent() {
       />
       <Routes>
         <Route path="/" element={<BrowseHotels />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signup" element={<Signup />} />
