@@ -197,7 +197,7 @@ const Navbar = () => {
                   </svg>
                 </button>
 
-                <ul className="dropdown-menu dropdown-menu-end mt-3 p-2 shadow border-0 rounded-4 account-dropdown-menu" style={{ minWidth: "280px" }}>
+                <ul className="dropdown-menu dropdown-menu-end mt-4 p-2 shadow border-0 rounded-4 account-dropdown-menu" style={{ minWidth: "280px" }}>
                   <li className="dropdown-header">
                     <div className="d-flex align-items-center mb-2">
                       <div className="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style={{ width: "40px", height: "40px" }}>
@@ -293,7 +293,7 @@ const Navbar = () => {
                       </svg>
                     </button>
 
-                    <ul className="dropdown-menu dropdown-menu-end mt-3 p-2 shadow border-0 rounded-4" style={{ minWidth: "220px" }}>
+                    <ul className="dropdown-menu dropdown-menu-end mt-4 p-2 shadow border-0 rounded-4" style={{ minWidth: "220px" }}>
                       <li><Link className="dropdown-item py-2" to="/login">Log in</Link></li>
                       <li><Link className="dropdown-item py-2" to="/signup">Sign up</Link></li>
                       <li><hr className="dropdown-divider" /></li>
